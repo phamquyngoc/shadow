@@ -1,0 +1,33 @@
+#CTDL038
+CTDL
+#include<bits/stdc++.h>
+using namespace std;
+int aa(string a){
+	char acu='5';
+	char amoi='3';
+	int so;
+	for(int i=0;i<a.size();i++){
+		if(a[i]==acu){
+			a[i]=amoi;
+		}
+	} return so=stoi(a);
+}
+int bb(string b){
+	char bcu='3';
+	char bmoi='5';
+	int so;
+	for(int i=0;i<b.size();i++){
+		if(b[i]==bcu){
+			b[i]=bmoi;
+		}
+	}return so=stoi(b);
+}
+int main(){
+	int t;
+	cin>>t;
+	while(t--){
+		string a,b;
+		cin>>a>>b;
+		cout<<aa(a)+aa(b)<<" "<<bb(a)+bb(b)<<endl;
+	}
+}
