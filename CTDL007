@@ -1,0 +1,40 @@
+#CTDL007
+#include<bits/stdc++.h>
+using namespace std;
+int n,a[100],ok;
+void ktao(){
+	for(int i=1;i<=n;i++){
+		a[i]=n-i+1;//Ktao cau hinh dau tien
+	}
+}
+void sinh(){
+	int i=n-1;//duyet tu bit thu 2 tu duoi len de so sanh voi bit truoc do
+	while(i>=1&&a[i]<a[i+1]){
+		i--;//so sanh voi bit truoc do neu nho hon thi duyet tiep sang bit tiep theo
+	}
+	if(i==0){
+		ok=0;
+	}
+	else{
+		int j=n;
+		while(a[i]<a[j]){
+			j--;
+		}swap(a[i],a[j]);//dao voi so nho hon lon nhat so voi cac so da duyet tu truoc
+		reverse(a + i + 1, a  + n + 1);//dao vi tri bit thu i+1 voi vi tri bit thu n
+	}//muc dich de tao ra hoan vi la so nho hon lon nhat so voi cau hinh truoc do
+}
+int main(){
+	int t;
+	cin>>t;
+	while(t--){
+		cin>>n;
+		ktao();
+		ok=1;
+		while(ok){
+			for(int i=1;i<=n;i++){
+				cout<<a[i];
+			}cout<<" ";
+			sinh();
+		}cout<<endl;
+	}
+}
