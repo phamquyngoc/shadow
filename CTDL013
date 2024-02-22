@@ -1,0 +1,39 @@
+#CTDL013
+#include<bits/stdc++.h>
+using namespace std;
+int n,k,a[100],ok;
+void ktao(){
+	for(int i=1;i<=k;i++){
+		a[i]=i;
+	}
+}
+void sinh(){
+	int i=k;
+	while(i>=1&&a[i]==n-k+i){
+		i--;//kiem tra xem bit dang xet co bang gia tri cua gia tri max hay khong, gia tri max o day la n-k+i voi i la vi tri cua bit dang xet
+	}
+	if(i==0){
+		ok=0;
+	}
+	else{
+		a[i]++;//neu khong bang n-k+1 thi tang gia tri bit dang xet len 1
+		for(int j=i+1;j<=k;j++){
+			a[j]=a[j-1]+1;//tang dan gia tri cua cac bit dang sau bit dang xet len 1 don vi de tao ra hoan vi lon hon be nhat
+		}
+	}
+}
+int main(){
+	int t;
+	cin>>t;
+	while(t--){
+		cin>>n>>k;
+		ktao();
+		ok=1;
+		while(ok){
+			for(int i=1;i<=k;i++){
+				cout<<a[i];
+			}cout<<" ";
+			sinh();
+		}cout<<endl;
+	}
+}
