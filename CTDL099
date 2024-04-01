@@ -1,7 +1,7 @@
 //CTDL099
 #include<bits/stdc++.h>
 using namespace std;
-int ktra(vector<int> &a, int i){
+int ktra(vector<int> &a, int i)//Tạo vector a và vị trí i của vector a {
 	int n=a.size();
 	for(int j=i+1;j<n;j++){
 		if(a[j]>a[i]){
