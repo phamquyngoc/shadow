@@ -1,0 +1,30 @@
+#CTDL002
+#include<bits/stdc++.h>
+using namespace std;
+void ketqua(string s, int i) //s la chuoi nhap vao, i la vi tri phan tu
+{
+	if(i==s.size()){
+		cout<<s<<endl;
+		return;
+	}
+	if(s[i]=='?'){
+		s[i]='0';
+		ketqua(s,i+1);//neu s[i]=? thi cho s[i]=0 roi goi de quy tang vi tri len 1
+		s[i]='1';
+		ketqua(s,i+1);
+		s[i]='?';//dat lai gia tri ban dau roi duyet tiep
+	}
+	else{
+		ketqua(s,i+1);//neu khong phai ? thi goi de quy tang vi tri len 1
+	}
+}
+int main(){
+	int t;
+	cin>>t;
+	while(t--){
+		string s;
+		cin>>s;
+		ketqua(s,0);//bat dau duyet tu vi tri 0
+	}
+	return 0;
+}
