@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,m,u;
+vector<int> a[1000];
+bool visited[1000];
+void input(){
+	cin>>n>>m>>u;
+	for(int i=0;i<m;i++){
+		int x,y;
+		cin>>x>>y;
+		a[x].push_back(y);
+		//a[y].push_back(x);
+	} memset(visited,false,sizeof(visited));
+}
+void bfs(int u){
+	queue<int> q;//khoi tao hang doi;
+	q.push(u);//dua dinh xuat phat vao hang doi
+	visited[u]=true;//u da duyet nen cho bang true
+	while(!q.empty()){//neu hang doi ko rong
+		int v=q.front();//lay dinh o dau hang doi
+		q.pop();//xoa dinh o dau hang doi di vi da duoc duyet roi
+		cout<<v<<" ";
+		for(int x:a[v]){
+			//duyet cac dinh ke voi v
+			if(!visited[x]){
+				q.push(x);//neu dinh ay chua duoc duyet thi them vao hang doi
+				visited[x]=true;
+			}
+		}
+	}
+}
+int main(){
+	int t;
+	cin>>t;
+	while(t--){
+		input();
+		bfs(u);	
+		cout<<endl;
+	}
+}
