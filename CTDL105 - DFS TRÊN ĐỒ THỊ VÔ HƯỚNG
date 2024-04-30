@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+int m,n,u;
+vector<int> a[1000];
+bool visited[1000];//mang check dinh da duyet
+void input(){
+	cin>>n>>m>>u;
+	for(int i=0;i<m;i++){
+		int x,y;
+		cin>>x>>y;
+		a[x].push_back(y);
+		a[y].push_back(x);
+		//chuyen sang dang danh sach ke de toi uu thoi gian chay code
+	}
+		memset(visited,false,sizeof(visited));//chuyen cac phan tu trong mang thanh false tuc la chua dinh nao duoc duyet
+}
+void dfs(int u){
+	cout<<u<<" ";//in ra dinh xuat phat
+	visited[u]=true;//dinh xuat phat da duoc duyet nen gan bang true
+	for(int v:a[u]){
+		//duyet ca dinh ke voi u
+		if(!visited[v]){
+			//neu dinh v chua duoc duyet
+			dfs(v);//goi de quy, quay lai dinh truoc do xem ke voi canh nao chua duyet khong
+		}
+	}
+}
+int main(){
+	int t;
+	cin>>t;
+	while(t--){
+		input();
+		dfs(u);
+		cout<<endl;
+	}
+}
