@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+		int n;
+		int a[1000][1000];
+		vector<pair<int,int>> edge;//vector luu cap dinh va canh tuong ung
+int main(){
+		cin>>n;
+		cin.ignore();
+		for(int i=1;i<=n;i++){
+			string s,num;
+			getline(cin,s);//su dung cai nay thay vi cin>>s vì cin>>s se ket thuc khi nhap dau cach hoac xuong dong
+			stringstream ss(s);//tach tung phan tu cua s luu vao ss
+			while(ss>>num){//gan tung phan tu cua ss vao num
+				if(stoi(num)>i){
+					edge.push_back({i, stoi(num)});	
+				}
+			}
+		}
+		for(auto in:edge){
+			cout<<in.first<<" "<<in.second<<endl;//in lan luot i va stoi(num)
+		}
+		}
+	
