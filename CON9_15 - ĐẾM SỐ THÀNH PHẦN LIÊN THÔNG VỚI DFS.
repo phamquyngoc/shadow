@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,m,u;
+vector<int> a[1000];
+bool visited[1000];
+void input(){
+	cin>>n>>m;
+	for(int i=0;i<m;i++){
+		int x,y;
+		cin>>x>>y;
+		a[x].push_back(y);
+		a[y].push_back(x);
+	}memset(visited,false,sizeof(visited));
+}
+void dfs(int u){
+	visited[u]=true;
+	for(int x:a[u]){
+		if(!visited[x]){
+			visited[x]=true;
+			dfs(x);
+		}
+	}
+}
+void demlienthong(){
+	int dem=0;//khai bao bien dem la so thanh phan lien thong
+	for(int i=1;i<=n;i++){//duyet tu dinh 1 den cac dinh con lai
+		if(!visited[i]){//neu dinh chua duoc duyet
+			dem++;//tang so thanh phan lien thong
+			dfs(i);//goi dfs de duyet tiep thanh phan lien thong moi
+		}
+	}
+	cout<<dem;
+}
+int main(){
+	int t;
+	cin>>t;
+	while(t--){
+		input();
+		demlienthong();
+		cout<<endl;
+	}
+}
