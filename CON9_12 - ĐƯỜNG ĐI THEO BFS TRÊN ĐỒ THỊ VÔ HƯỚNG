@@ -1,0 +1,52 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,m,s,t;//n dinh, m canh, s la dinh bat dau, t la dinh ket thuc
+vector<int> a[1000];
+bool visited[1000];
+int parent[1000];//mang luu dinh truoc do cua dinh da duyet
+void bfs(int u){
+	queue<int> q;
+	q.push(u);
+	visited[u]=true;
+	while(!q.empty()){
+		int v=q.front();
+		q.pop();
+		for(int x:a[v]){
+			if(!visited[x]){
+				q.push(x);
+				visited[x]=true;
+				parent[x]=v;
+			}
+		}
+	}
+}
+void duongdi(int s,int t){
+	memset(visited,false,sizeof(visited));
+	bfs(s);//duyet bfs tu dinh bat dau s
+		vector<int> path;//tao vector de luu duong di
+		//bat dau tu dinh ket thuc t
+		while(t!=s){
+			//duyet den khi nao t=s thi dung lai
+			path.push_back(t);
+			t=parent[t];//gan t bang dinh truoc do, coi nhu la duong di
+		}path.push_back(s);
+		reverse(path.begin(),path.end());//dao nguoc mang de cho ra duong di dung tu diem bat dau den diem ket thuc
+		for(int x:path){
+			cout<<x<<" ";
+	}
+}
+int main(){
+	int test;
+	cin>>test;
+	while(test--){
+		cin>>n>>m>>s>>t;
+	for(int i=0;i<m;i++){
+		int x,y;
+		cin>>x>>y;
+		a[x].push_back(y);
+		a[y].push_back(x);
+	}
+		duongdi(s,t);
+		cout<<endl;
+	}
+}
