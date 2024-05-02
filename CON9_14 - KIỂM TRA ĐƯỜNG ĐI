@@ -1,0 +1,47 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,m,s,t;
+vector<int> a[1000];
+bool visited[1000];
+int parent[1000];
+void input(){
+	cin>>n>>m;
+	for(int i=0;i<m;i++){
+		int x,y;
+		cin>>x>>y;
+		a[x].push_back(y);
+		a[y].push_back(x);
+	}
+}
+void dfs(int u){
+	visited[u]=true;
+	for(int x:a[u]){
+		if(!visited[x]){
+			parent[x]=u;
+			dfs(x);
+		}
+	}
+}
+void duongdi(int s, int t){
+	memset(visited,false,sizeof(visited));
+	dfs(s);
+	vector<int> path;
+	if(!visited[t]){//neu duyet het dfs cua s ma t van chua duoc duyet tuc la giua s va t khong co duong di
+		cout<<"NO"<<endl;
+	}
+	else{
+	cout<<"YES"<<endl;
+}}
+int main(){
+	int test;
+	cin>>test;
+	while(test--){
+		input();
+		int q;
+		cin>>q;
+		while(q--){
+		cin>>s>>t;
+		duongdi(s,t);
+		}
+	}
+}
