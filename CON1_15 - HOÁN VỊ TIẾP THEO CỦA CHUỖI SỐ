@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+string a;
+void sinh(){
+	int i=a.length()-2;
+	while(i>=0&&a[i]>=a[i+1]){
+		i--;
+	}
+	if(i==-1){
+		cout<<"BIGGEST"<<endl;
+		}
+		else{
+			int j=a.length()-1;
+			while(a[i]>=a[j]){
+				j--;
+			}swap(a[i],a[j]);
+			reverse(a.begin()+i+1,a.end());
+		
+		cout<<a<<endl;
+	}}
+
+int main(){
+	int t;
+	cin>>t;
+	while(t--){
+		int tc;
+		cin>>tc;
+		cin>>a;
+		cout<<tc<<" ";
+		sinh();
+	}
+}
