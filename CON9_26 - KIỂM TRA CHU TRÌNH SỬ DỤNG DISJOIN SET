@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,m;
+vector<int> a[100];
+int parent[100];
+bool visited[100];
+void input(){
+	cin>>n>>m;
+	for(int i=1;i<=m;i++){
+		int x,y;
+		cin>>x>>y;
+		a[x].push_back(y);
+		a[y].push_back(x);
+	}memset(visited,false,sizeof(visited));
+}
+bool dfs(int u){
+	visited[u]=true;
+	for(int v:a[u]){
+		if(!visited[v]){
+			parent[v]=u;
+			if(dfs(v)) return true;
+		}else if(v!=parent[v]) return true;
+	}return false;
+}
+int main(){
+	int t;
+	cin>>t;
+	while(t--){
+		input();
+		for(int i=1;i<=n;i++){
+			if(!visited[i]){
+				if(dfs(i)){
+				cout<<"YES"<<endl;
+				return 0;
+			}}
+		}cout<<"NO"<<endl;
+	}
+}
