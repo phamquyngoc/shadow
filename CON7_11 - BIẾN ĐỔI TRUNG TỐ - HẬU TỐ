@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+bool toantu(char s){
+	return s=='+'||s=='-'||s=='*'||s=='/';
+}
+string prefix(string tiento){
+	string hauto="";
+	stack<char> st;
+	for(char &c:tiento){
+		if(isalnum(c)){//neu du lieu dua vao la so hoac chu cai
+			hauto+=c;
+		}
+		else if(c=='('){
+			st.push(c);
+		}
+		else if(c==')'){
+			while(!st.empty()&&st.top()!='('){
+				hauto+=st.top();
+				st.pop();
+			}st.pop();//xoa '(' khoi stack
+		}
+		else{// neu du lieu dua vao la toan tu
+			while(!st.empty()&&toantu(st.top())&&((c!='*'||c!='/')||(st.top()=='*'||st.top()=='/'))){//cai nay de xet do uu tien, * / se duoc dua vao hauto truoc sau do moi den + -
+				hauto+=st.top();
+				st.pop();
+			}st.push(c);
+		}
+	}while(!st.empty()){
+		hauto+=st.top();
+		st.pop();
+	}
+	return hauto;
+}
+int main(){
+	int t;
+	cin>>t;
+	while(t--){
+		string s;
+		cin>>s;
+		cout<<prefix(s)<<endl;
+	}
+}
